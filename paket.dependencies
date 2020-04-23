@@ -2,6 +2,7 @@ framework: netcoreapp3.1
 
 source https://api.nuget.org/v3/index.json
 nuget FSharp.Core
+nuget Newtonsoft.Json ~> 12.0
 
 # git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
 # LMC Nuget dependencies:

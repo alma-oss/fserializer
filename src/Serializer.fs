@@ -25,3 +25,17 @@ module Serialize =
 
     let toJsonPretty: obj -> string = Json.serializePretty
     let toJson: obj -> string = Json.serialize
+
+    open System
+
+    let dateTime (dateTime: DateTime) =
+        dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'")
+
+    let dateTimeOffset (dateTime: DateTimeOffset) =
+        dateTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'")
+
+    type StringOrNull = string option -> string
+
+    let stringOrNull: StringOrNull = function
+        | Some string -> string
+        | _ -> null

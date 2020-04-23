@@ -5,6 +5,9 @@
 - Add functions
     - `Serialize.toJson`
     - `Serialize.toJsonPretty`
+    - `Serialize.dateTime`
+    - `Serialize.dateTimeOffset`
+    - `Serialize.stringOrNull`
 
 ## 0.1.0 -
 - Initial implementation

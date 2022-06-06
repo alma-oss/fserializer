@@ -2,6 +2,9 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Update dependencies
+- Include `null` in serialized json
+- Indent by `4` spaces in `Serialize.toJsonPretty`
 
 ## 3.0.0 - 2022-01-04
 - [**BC**] Use net6.0

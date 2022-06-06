@@ -1,0 +1,8 @@
+{
+    "id": 42,
+    "name": "Foo",
+    "domain_data": {
+        "type": "with null",
+        "value": null
+    }
+}

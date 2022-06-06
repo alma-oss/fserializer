@@ -8,6 +8,9 @@ nuget Newtonsoft.Json ~> 13.0
 # LMC Nuget dependencies:
 # nuget Lmc.<...>
 
+nuget Expecto
+nuget YoloDev.Expecto.TestSdk
+
 // [ FAKE GROUP ]
 group Build
     storage none

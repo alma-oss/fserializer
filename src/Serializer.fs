@@ -48,3 +48,21 @@ module Serialize =
     let stringOrNull: StringOrNull = function
         | Some string -> string
         | _ -> null
+
+    module private Hash =
+        open System.Security.Cryptography
+        open System.Text
+
+        let hashSHA256 (data: string) =
+            let toLower (string: string) =
+                string.ToLower()
+
+            data
+            |> Encoding.ASCII.GetBytes
+            |> (SHA256.Create()).ComputeHash
+            |> System.BitConverter.ToString
+            |> Seq.filter ((<>) '-')
+            |> String.Concat
+            |> toLower
+
+    let hash = Hash.hashSHA256

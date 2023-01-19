@@ -2,6 +2,7 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `Serialize.hash` function
 
 ## 3.1.0 - 2022-06-06
 - Update dependencies

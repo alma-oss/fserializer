@@ -4,6 +4,7 @@
 ## Unreleased
 - Add `Serialize.toJsonIgnoringNullsPretty` function
 - Add `Serialize.toJsonIgnoringNulls` function
+- Add `Serialize.JsonValue.toSerializableJson` function
 
 ## 3.2.0 - 2023-01-19
 - Add `Serialize.hash` function

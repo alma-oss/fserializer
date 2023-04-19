@@ -5,6 +5,8 @@ NUGET
       FSharp.Core (>= 4.6)
       Mono.Cecil (>= 0.11.3)
     FSharp.Core (6.0.4)
+    FSharp.Data (4.2.10)
+      FSharp.Core (>= 5.0.1)
     Mono.Cecil (0.11.4)
     Newtonsoft.Json (13.0.1)
     System.Collections.Immutable (6.0)

@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 3.3.0 - 2023-04-19
 - Add `Serialize.toJsonIgnoringNullsPretty` function
 - Add `Serialize.toJsonIgnoringNulls` function
 - Add `Serialize.JsonValue.toSerializableJson` function

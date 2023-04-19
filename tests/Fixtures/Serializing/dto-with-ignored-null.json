@@ -1,0 +1,7 @@
+{
+    "id": 42,
+    "name": "Foo",
+    "domain_data": {
+        "type": "with ignored null"
+    }
+}

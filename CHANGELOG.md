@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `Serialize.toJsonIgnoringNullsPretty` function
+- Add `Serialize.toJsonIgnoringNulls` function
 
 ## 3.2.0 - 2023-01-19
 - Add `Serialize.hash` function

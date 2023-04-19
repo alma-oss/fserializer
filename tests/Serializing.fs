@@ -88,6 +88,34 @@ let provideDtos =
         }
     ]
 
+let provideDtosIgnoringNulls =
+    [
+        {
+            Description = "DTO with null"
+            Event = {
+                Id = Domain.Id 42
+                Name = "Foo"
+                DomainData = {
+                    Type = Domain.Type.WithIgnoredNull
+                    Value = None
+                }
+            }
+            Expected = expected "dto-with-ignored-null.json"
+        }
+        {
+            Description = "DTO with value"
+            Event = {
+                Id = Domain.Id 42
+                Name = "Foo"
+                DomainData = {
+                    Type = Domain.Type.WithValue
+                    Value = Some "value"
+                }
+            }
+            Expected = expected "dto-with-value.json"
+        }
+    ]
+
 [<Tests>]
 let serializeTest =
     testList "Serializer - serialize" [
@@ -113,6 +141,32 @@ let serializeTest =
                     event
                     |> Domain.toDto
                     |> Serialize.toJsonPretty
+
+                Expect.equal serialized expected description
+            )
+
+        testCase "DTO to json ignoring nulls" <| fun _ ->
+            provideDtosIgnoringNulls
+            |> List.iter (fun ({ Event = event; Expected = expected; Description = description }) ->
+                let serialized =
+                    event
+                    |> Domain.toDto
+                    |> Serialize.toJsonIgnoringNulls
+
+                Expect.hasLength (serialized.Split "\n") 1 "Serialized json should have a single line."
+
+                serialized
+                |> Actual
+                |> assertJsonEquals id description (Expected expected)
+            )
+
+        testCase "DTO to json pretty ignoring nulls" <| fun _ ->
+            provideDtosIgnoringNulls
+            |> List.iter (fun ({ Event = event; Expected = expected; Description = description }) ->
+                let serialized =
+                    event
+                    |> Domain.toDto
+                    |> Serialize.toJsonIgnoringNullsPretty
 
                 Expect.equal serialized expected description
             )

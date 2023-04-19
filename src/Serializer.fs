@@ -16,11 +16,13 @@ module Serialize =
                 NullValueHandling = NullValueHandling.Include
             )
 
-        let serialize obj =
-            JsonConvert.SerializeObject (obj, options())
+        let serializeWith (options: JsonSerializerSettings) obj =
+            JsonConvert.SerializeObject (obj, options)
 
-        let serializePretty obj =
-            let options = options()
+        let serialize obj =
+            obj |> serializeWith (options())
+
+        let private serializePrettyWith (options: JsonSerializerSettings) obj =
             options.Formatting <- Formatting.Indented
 
             use stringWriter = new StringWriter()
@@ -32,8 +34,25 @@ module Serialize =
 
             stringWriter.ToString()
 
+        let serializePretty obj =
+            obj |> serializePrettyWith (options())
+
+        let private optionsIgnoringNulls () =
+            let options = options ()
+            options.NullValueHandling <- NullValueHandling.Ignore
+            options
+
+        let serializeIgnoringNulls obj =
+            obj |> serializeWith (optionsIgnoringNulls())
+
+        let serializeIgnoringNullsPretty obj =
+            obj |> serializePrettyWith (optionsIgnoringNulls())
+
     let toJsonPretty: obj -> string = Json.serializePretty
     let toJson: obj -> string = Json.serialize
+
+    let toJsonIgnoringNullsPretty: obj -> string = Json.serializeIgnoringNullsPretty
+    let toJsonIgnoringNulls: obj -> string = Json.serializeIgnoringNulls
 
     open System
 

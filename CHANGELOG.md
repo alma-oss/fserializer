@@ -2,6 +2,7 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `Serialize.JsonElement` module
 
 ## 4.1.0 - 2023-08-10
 - Update dependencies

@@ -105,6 +105,29 @@ module Serialize =
                 :> obj
             | JsonValue.Null -> null
 
+    [<RequireQualifiedAccess>]
+    module JsonElement =
+        open System.Text.Json
+        open FSharp.Data
+
+        let private serializeAsJsonValue (serialize: JsonValue -> obj) (element: JsonElement) =
+            match element.Deserialize() with
+            | null -> null
+            | element ->
+                let rawJson = element.ToString()
+                try
+                    rawJson
+                    |> JsonValue.Parse
+                    |> serialize
+                with
+                | _ -> rawJson
+
+        let toSerializableJson: JsonElement -> obj =
+            serializeAsJsonValue JsonValue.toSerializableJson
+
+        let toSerializableJsonIgnoringNullsInRecord: JsonElement -> obj =
+            serializeAsJsonValue JsonValue.toSerializableJsonIgnoringNullsInRecord
+
     open System
 
     let dateTime (dateTime: DateTime) =

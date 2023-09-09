@@ -1,7 +1,7 @@
 module Serializer.TestUtils
 
 open Expecto
-open Lmc.Serializer
+open Alma.Serializer
 
 type AssertJson =
     | Expected of string

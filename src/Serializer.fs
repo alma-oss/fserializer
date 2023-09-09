@@ -1,4 +1,4 @@
-namespace Lmc.Serializer
+namespace Alma.Serializer
 
 [<RequireQualifiedAccess>]
 module Serialize =

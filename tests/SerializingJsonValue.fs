@@ -5,7 +5,7 @@ open Expecto
 open FSharp.Data
 open Serializer.TestUtils
 
-open Lmc.Serializer
+open Alma.Serializer
 
 let expected fileName = $"Fixtures/Serializing/{fileName}" |> File.ReadAllText
 

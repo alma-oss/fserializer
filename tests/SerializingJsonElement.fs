@@ -5,7 +5,7 @@ open System.Text.Json
 open Expecto
 open Serializer.TestUtils
 
-open Lmc.Serializer
+open Alma.Serializer
 
 let expected fileName = $"Fixtures/Serializing/{fileName}" |> File.ReadAllText
 let jsonElement (json: string) =

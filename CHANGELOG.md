@@ -4,6 +4,7 @@
 ## Unreleased
 - [**BC**] Use net8.0
 - Fix package metadata
+- Serialize numbers in json value to `int64`
 
 ## 5.0.0 - 2023-09-09
 - [**BC**] Use `Alma` namespace

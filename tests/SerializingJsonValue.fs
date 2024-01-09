@@ -93,6 +93,18 @@ let provideJsonValue =
             |]
             Expected = expected "json-value-dto-with-value.json"
         }
+        {
+            Description = "DTO with int64 value"
+            Value = JsonValue.Record [|
+                "id", JsonValue.Number (1234567890 |> decimal)  // int
+                "name", JsonValue.String "Foo"
+                "domain_data", JsonValue.Record [|
+                    "type", JsonValue.String "int64"
+                    "value", JsonValue.Number (123456789011L |> decimal) // int64
+                |]
+            |]
+            Expected = expected "json-value-dto-with-int64-value.json"
+        }
     ]
 
 let provideJsonValueIgnoringNulls =
@@ -133,6 +145,18 @@ let provideJsonValueIgnoringNulls =
                 |]
             |]
             Expected = expected "json-value-dto-with-value.json"
+        }
+        {
+            Description = "DTO with int64 value"
+            Value = JsonValue.Record [|
+                "id", JsonValue.Number (1234567890 |> decimal)  // int
+                "name", JsonValue.String "Foo"
+                "domain_data", JsonValue.Record [|
+                    "type", JsonValue.String "int64"
+                    "value", JsonValue.Number (123456789011L |> decimal) // int64
+                |]
+            |]
+            Expected = expected "json-value-dto-with-int64-value.json"
         }
     ]
 

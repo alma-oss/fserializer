@@ -25,8 +25,10 @@ module Serialize =
         let private serializePrettyWith (options: JsonSerializerSettings) obj =
             options.Formatting <- Formatting.Indented
 
+            // fsharplint:disable RedundantNewKeyword
             use stringWriter = new StringWriter()
             use writer = new JsonTextWriter(stringWriter)
+            // fsharplint:enable
             writer.Indentation <- 4
 
             let serializer = JsonSerializer.Create(options)
@@ -71,7 +73,7 @@ module Serialize =
 
         let rec toSerializableJson: JsonValue -> obj = function
             | JsonValue.String string -> string :> obj
-            | JsonValue.Number number -> number |> int :> obj
+            | JsonValue.Number number -> number |> int64 :> obj
             | JsonValue.Float float -> float :> obj
             | JsonValue.Boolean bool -> bool :> obj
             | JsonValue.Record properties ->
@@ -87,7 +89,7 @@ module Serialize =
 
         let rec toSerializableJsonIgnoringNullsInRecord: JsonValue -> obj = function
             | JsonValue.String string -> string :> obj
-            | JsonValue.Number number -> number |> int :> obj
+            | JsonValue.Number number -> number |> int64 :> obj
             | JsonValue.Float float -> float :> obj
             | JsonValue.Boolean bool -> bool :> obj
             | JsonValue.Record properties ->

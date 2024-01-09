@@ -25,8 +25,10 @@ module Serialize =
         let private serializePrettyWith (options: JsonSerializerSettings) obj =
             options.Formatting <- Formatting.Indented
 
+            // fsharplint:disable RedundantNewKeyword
             use stringWriter = new StringWriter()
             use writer = new JsonTextWriter(stringWriter)
+            // fsharplint:enable
             writer.Indentation <- 4
 
             let serializer = JsonSerializer.Create(options)

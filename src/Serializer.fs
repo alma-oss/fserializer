@@ -2,53 +2,68 @@ namespace Alma.Serializer
 
 [<RequireQualifiedAccess>]
 module Serialize =
+    type SerializerOptions =
+        | Pretty
+        | IgnoringNulls
+
     module private Json =
         open System.IO
         open Newtonsoft.Json
         open Newtonsoft.Json.Serialization
 
-        let private options () =
-            JsonSerializerSettings (
-                ContractResolver =
-                    DefaultContractResolver (
-                        NamingStrategy = SnakeCaseNamingStrategy()
-                    ),
-                NullValueHandling = NullValueHandling.Include
+        [<RequireQualifiedAccess>]
+        module Options =
+            let create () =
+                JsonSerializerSettings (
+                    ContractResolver =
+                        DefaultContractResolver (
+                            NamingStrategy = SnakeCaseNamingStrategy()
+                        ),
+                    NullValueHandling = NullValueHandling.Include
+                )
+
+            let map f (options: JsonSerializerSettings) =
+                f options
+
+            let withIgnoringNulls = map (fun opts ->
+                    opts.NullValueHandling <- NullValueHandling.Ignore
+                    opts
+                )
+
+            let withPretty = map (fun opts ->
+                opts.Formatting <- Formatting.Indented
+                opts
             )
 
-        let serializeWith (options: JsonSerializerSettings) obj =
-            JsonConvert.SerializeObject (obj, options)
+        let createSerializer options =
+            options
+            |> List.fold (fun opts -> function
+                | Pretty -> Options.withPretty opts
+                | IgnoringNulls -> Options.withIgnoringNulls opts
+            ) (Options.create())
+            |> JsonSerializer.Create
 
-        let serialize obj =
-            obj |> serializeWith (options())
-
-        let private serializePrettyWith (options: JsonSerializerSettings) obj =
-            options.Formatting <- Formatting.Indented
-
-            // fsharplint:disable RedundantNewKeyword
+        let private serializeWithSerializer (serializer: JsonSerializer) indentation (obj: obj) =
             use stringWriter = new StringWriter()
+
             use writer = new JsonTextWriter(stringWriter)
-            // fsharplint:enable
-            writer.Indentation <- 4
+            match indentation with
+            | Some indent -> writer.Indentation <- indent
+            | None -> ()
 
-            let serializer = JsonSerializer.Create(options)
             serializer.Serialize(writer, obj)
-
             stringWriter.ToString()
 
-        let serializePretty obj =
-            obj |> serializePrettyWith (options())
+        let private serializeWith options = serializeWithSerializer (createSerializer options) None
+        let private serializePrettyWith options = serializeWithSerializer (createSerializer (Pretty :: options)) (Some 4)
 
-        let private optionsIgnoringNulls () =
-            let options = options ()
-            options.NullValueHandling <- NullValueHandling.Ignore
-            options
+        let serialize = serializeWith []
+        let serializePretty = serializePrettyWith []
 
-        let serializeIgnoringNulls obj =
-            obj |> serializeWith (optionsIgnoringNulls())
+        let serializeIgnoringNulls = serializeWith [ IgnoringNulls ]
+        let serializeIgnoringNullsPretty = serializePrettyWith [ IgnoringNulls ]
 
-        let serializeIgnoringNullsPretty obj =
-            obj |> serializePrettyWith (optionsIgnoringNulls())
+    let createSerializer = Json.createSerializer
 
     let toJsonPretty: obj -> string = Json.serializePretty
     let toJson: obj -> string = Json.serialize

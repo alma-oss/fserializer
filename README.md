@@ -1,24 +1,15 @@
 F-Serializer
 ============
 
+[![NuGet](https://img.shields.io/nuget/v/Alma.Serializer.svg)](https://www.nuget.org/packages/Alma.Serializer)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Alma.Serializer.svg)](https://www.nuget.org/packages/Alma.Serializer)
+[![Tests](https://github.com/alma-oss/fserializer/actions/workflows/tests.yaml/badge.svg)](https://github.com/alma-oss/fserializer/actions/workflows/tests.yaml)
+
 > Library for common serializations.
 
 ---
 
 ## Install
-
-Add following into `paket.dependencies`
-```
-source https://nuget.pkg.github.com/almacareer/index.json username: "%PRIVATE_FEED_USER%" password: "%PRIVATE_FEED_PASS%"
-# LMC Nuget dependencies:
-nuget Alma.Serializer
-```
-
-NOTE: For local development, you have to create ENV variables with your github personal access token.
-```sh
-export PRIVATE_FEED_USER='{GITHUB USERNANME}'
-export PRIVATE_FEED_PASS='{TOKEN}'	# with permissions: read:packages
-```
 
 Add following into `paket.references`
 ```

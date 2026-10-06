@@ -1,0 +1,113 @@
+lockfile_version: '1'
+dependencies: []
+deployments:
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fserializer
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fserializer/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:b4cbe38dcbf92085979ca63eb233ab548b313e239950d7c8974499fb2d734d29
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fserializer/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:d6369975df004d4edb3692a72980325748b1ce1023efc8c99d395b2cff19900c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fserializer/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:1371bc90b7eab86f2e7ca28a84866ae6f6960eb206430f08c364a147f0a13d9e
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fserializer/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:00582d8ebafc15613c48ef753704251d75dc463fce2bf9cd4130e1c2faf9e7db
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fserializer
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fserializer/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:b4cbe38dcbf92085979ca63eb233ab548b313e239950d7c8974499fb2d734d29
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fserializer/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:d6369975df004d4edb3692a72980325748b1ce1023efc8c99d395b2cff19900c
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fserializer/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:1371bc90b7eab86f2e7ca28a84866ae6f6960eb206430f08c364a147f0a13d9e
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fserializer/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:00582d8ebafc15613c48ef753704251d75dc463fce2bf9cd4130e1c2faf9e7db
+local_deployed_files:
+- .agents/skills/fserializer
+- .agents/skills/fserializer/SKILL.md
+- .agents/skills/fserializer/references/anti-patterns.md
+- .agents/skills/fserializer/references/examples.md
+- .agents/skills/fserializer/references/preferred-patterns.md
+- .claude/skills/fserializer
+- .claude/skills/fserializer/SKILL.md
+- .claude/skills/fserializer/references/anti-patterns.md
+- .claude/skills/fserializer/references/examples.md
+- .claude/skills/fserializer/references/preferred-patterns.md
+local_deployed_file_hashes:
+  .agents/skills/fserializer/SKILL.md: sha256:b4cbe38dcbf92085979ca63eb233ab548b313e239950d7c8974499fb2d734d29
+  .agents/skills/fserializer/references/anti-patterns.md: sha256:d6369975df004d4edb3692a72980325748b1ce1023efc8c99d395b2cff19900c
+  .agents/skills/fserializer/references/examples.md: sha256:1371bc90b7eab86f2e7ca28a84866ae6f6960eb206430f08c364a147f0a13d9e
+  .agents/skills/fserializer/references/preferred-patterns.md: sha256:00582d8ebafc15613c48ef753704251d75dc463fce2bf9cd4130e1c2faf9e7db
+  .claude/skills/fserializer/SKILL.md: sha256:b4cbe38dcbf92085979ca63eb233ab548b313e239950d7c8974499fb2d734d29
+  .claude/skills/fserializer/references/anti-patterns.md: sha256:d6369975df004d4edb3692a72980325748b1ce1023efc8c99d395b2cff19900c
+  .claude/skills/fserializer/references/examples.md: sha256:1371bc90b7eab86f2e7ca28a84866ae6f6960eb206430f08c364a147f0a13d9e
+  .claude/skills/fserializer/references/preferred-patterns.md: sha256:00582d8ebafc15613c48ef753704251d75dc463fce2bf9cd4130e1c2faf9e7db

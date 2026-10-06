@@ -1,5 +1,7 @@
 # AGENTS.md — Alma.Serializer
 
+This repo ships Agent Skill for the `Alma.Serializer` library. Compatible agents discover it automatically; see `.agents/skills/fserializer/SKILL.md`
+
 ## Project Purpose
 
 F# library providing common serialization utilities. Wraps `Newtonsoft.Json` and `FSharp.Data` for JSON serialization/deserialization with F#-friendly APIs. Published as NuGet package `Alma.Serializer`.

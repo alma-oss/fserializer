@@ -7,7 +7,7 @@ open Serializer.TestUtils
 
 open Alma.Serializer
 
-let expected fileName = $"Fixtures/Serializing/{fileName}" |> File.ReadAllText
+let expected fileName = Path.Combine(__SOURCE_DIRECTORY__, "Fixtures", "Serializing", fileName) |> File.ReadAllText
 
 let okOrFail = function
     | Ok ok -> ok

@@ -84,7 +84,7 @@ module Serialize =
                     acc.Add(key, value)
                     acc
                 )
-                (new Dictionary<string, _>())
+                (Dictionary<string, _>())
 
         let rec toSerializableJson: JsonValue -> obj = function
             | JsonValue.String string -> string :> obj

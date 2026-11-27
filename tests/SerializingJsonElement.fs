@@ -7,10 +7,10 @@ open Serializer.TestUtils
 
 open Alma.Serializer
 
-let expected fileName = $"Fixtures/Serializing/{fileName}" |> File.ReadAllText
+let expected fileName = Path.Combine(__SOURCE_DIRECTORY__, "Fixtures", "Serializing", fileName) |> File.ReadAllText
 let jsonElement (json: string) =
     try (json |> JsonDocument.Parse).RootElement
-    with e -> failwithf "Failed to parse json: %s\nError: %s" json e.Message
+    with e -> raise (System.Exception(sprintf "Failed to parse json: %s" json, e))
 
 let okOrFail = function
     | Ok ok -> ok

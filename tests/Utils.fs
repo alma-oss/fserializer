@@ -45,5 +45,5 @@ let assertJsonEquals normalize description jsonA jsonB =
 
     expectedLines
     |> List.iteri (fun i expected ->
-        Expect.equal actualLines.[i] expected description
+        Expect.equal actualLines[i] expected description
     )
